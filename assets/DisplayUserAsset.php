@@ -9,7 +9,7 @@ use yii\web\AssetBundle as BaseDisplayUser;
  * AdminLte AssetBundle
  * @since 0.1
  */
-class AppAsset extends BaseDisplayUser
+class DisplayUserAsset extends BaseDisplayUser
 {
     public $sourcePath = '@vendor/ajnok/yii2-adminlte-displayuser/dist';
     public $css = [

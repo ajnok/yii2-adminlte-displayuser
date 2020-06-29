@@ -1,5 +1,5 @@
 <?php
-ajnok\displayuser\assets\AppAsset::register($this);
+ajnok\displayuser\assets\DisplayUserAsset::register($this);
 //print_r(Yii::$app->assetManager->getBundle('@vendor\ajnok\assets\AppAsset'));
 ?>
 

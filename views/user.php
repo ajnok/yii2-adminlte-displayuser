@@ -1,4 +1,5 @@
 <?php
+use ajnok\displayuser\DisplayUser;
 ajnok\displayuser\assets\DisplayUserAsset::register($this);
 //print_r(Yii::$app->assetManager->getBundle('@vendor\ajnok\assets\AppAsset'));
 ?>
@@ -8,8 +9,8 @@ ajnok\displayuser\assets\DisplayUserAsset::register($this);
         <img src="<?= $directoryAsset ?>/img/user-unknown.png" class="img-circle" alt="User Image"/>
     </div>
     <div class="pull-left info">
-        <p> <?= $user ?></p>
+        <p> <?= $username ?></p>
 
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <a href="#"><i class="fa fa-circle text-success"></i> <?= DisplayUser::t('messages', 'Online') ?></a>
     </div>
 </div>

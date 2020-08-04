@@ -12,13 +12,14 @@ class DisplayUser extends \yii\base\Widget
     public function init()
     {
         parent::init();
+        $this->registerTranslations();
 //        if ($this->isGuest === null || $this->isGuest) {
 //            $this->isGuest = 'ผู้ใช้ทั่วไป';
 //        }
         if (is_null(Yii::$app->user->identity)){
             $this->_isGuest = true;
             $this->_userid = -1;
-            $this->_username =  Yii::t('messages', 'Guest User');
+            $this->_username = DisplayUser::t('message','Guest User');
         }else{
             $this->_isGuest = false;
             $this->_username = Yii::$app->user->identity->username;
@@ -35,6 +36,7 @@ class DisplayUser extends \yii\base\Widget
             'uid' => $this->_userid,
         ]);
     }
+
     public function registerTranslations()
     {
         $i18n = Yii::$app->i18n;
@@ -43,8 +45,13 @@ class DisplayUser extends \yii\base\Widget
             'sourceLanguage' => 'en-US',
             'basePath' => '@vendor/ajnok/yii2-adminlte-displayuser/messages',
             'fileMap' => [
-                'ajnok/yii2-adminlte-displayuser/messages' => 'messages.php',
+                'displayuser/messages' => 'messages.php',
             ],
         ];
+    }
+
+    public static function t($category, $message, $params = [], $language = null)
+    {
+        return Yii::t('displayuser/' . $category, $message, $params, $language);
     }
 }

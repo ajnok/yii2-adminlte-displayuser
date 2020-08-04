@@ -8,7 +8,7 @@ ajnok\displayuser\assets\DisplayUserAsset::register($this);
         <img src="<?= $directoryAsset ?>/img/user-unknown.png" class="img-circle" alt="User Image"/>
     </div>
     <div class="pull-left info">
-        <p> Aj.Nok</p>
+        <p> <?= $user ?></p>
 
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
     </div>

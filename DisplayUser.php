@@ -9,32 +9,38 @@ class DisplayUser extends \yii\base\Widget
     private $_isGuest = false;
     private $_username;
     private $_userid;
+    private $_directoryAsset;
+    const GUEST_IMG_PATH = "img/user-unknown.png";
     public function init()
     {
         parent::init();
+        $this->registerTranslations();
+        $this->_directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ajnok/yii2-adminlte-displayuser/dist');
 //        if ($this->isGuest === null || $this->isGuest) {
 //            $this->isGuest = 'ผู้ใช้ทั่วไป';
 //        }
         if (is_null(Yii::$app->user->identity)){
             $this->_isGuest = true;
             $this->_userid = -1;
-            $this->_username =  Yii::t('messages', 'Guest User');
+            $this->_username = self::t('messages','Guest User');
         }else{
             $this->_isGuest = false;
             $this->_username = Yii::$app->user->identity->username;
             $this->_userid = Yii::$app->user->id;
+            // TODO Get an user image from unimplemented User's module
         }
     }
     public function run()
     {
 //        return Html::encode($this->message);
         return $this->render('user',[
-            'directoryAsset' => Yii::$app->assetManager->getPublishedUrl('@vendor/ajnok/yii2-adminlte-displayuser/dist'),
+            'image' => $this->getImage(),
             'isGuest' => $this->_isGuest,
             'username'  => $this->_username,
             'uid' => $this->_userid,
         ]);
     }
+
     public function registerTranslations()
     {
         $i18n = Yii::$app->i18n;
@@ -43,8 +49,24 @@ class DisplayUser extends \yii\base\Widget
             'sourceLanguage' => 'en-US',
             'basePath' => '@vendor/ajnok/yii2-adminlte-displayuser/messages',
             'fileMap' => [
-                'ajnok/yii2-adminlte-displayuser/messages' => 'messages.php',
+                'displayuser/messages' => 'messages.php',
             ],
         ];
+    }
+
+    public static function t($category, $message, $params = [], $language = null)
+    {
+        return Yii::t('displayuser/' . $category, $message, $params, $language);
+    }
+
+    private function getImage()
+    {
+        if($this->_isGuest){
+            return $this->_directoryAsset . DIRECTORY_SEPARATOR .  self::GUEST_IMG_PATH;
+        }else{
+            // TODO implement User image
+            // return something
+        }
+
     }
 }

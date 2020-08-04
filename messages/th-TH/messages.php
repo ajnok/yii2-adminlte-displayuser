@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Guest User' => '',
-    'Online' => '',
+    'Guest User' => 'ผู้ใช้ทั่วไป',
+    'Off-line' => 'ไม่ได้เข้าสู่ระบบ',
+    'Please login' => 'กรุณาเข้าสู่ระบบ'
 ];

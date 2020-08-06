@@ -9,13 +9,13 @@ class DisplayUser extends \yii\base\Widget
     private $_isGuest = false;
     private $_username;
     private $_userid;
-    private $_directoryAsset;
-    const GUEST_IMG_PATH = "img/user-unknown.png";
+//    private $_directoryAsset;
+    const GUEST_IMG_PATH = "img/user-unknown.svg";
     public function init()
     {
         parent::init();
         $this->registerTranslations();
-        $this->_directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ajnok/yii2-adminlte-displayuser/dist');
+
 //        if ($this->isGuest === null || $this->isGuest) {
 //            $this->isGuest = 'ผู้ใช้ทั่วไป';
 //        }
@@ -62,11 +62,15 @@ class DisplayUser extends \yii\base\Widget
     private function getImage()
     {
         if($this->_isGuest){
-            return $this->_directoryAsset . DIRECTORY_SEPARATOR .  self::GUEST_IMG_PATH;
+            return self::getThemeAssetDirectory() . DIRECTORY_SEPARATOR .  self::GUEST_IMG_PATH;
         }else{
             // TODO implement User image
             // return something
         }
+    }
+    public static function getThemeAssetDirectory()
+    {
 
+        return Yii::$app->assetManager->getPublishedUrl('@vendor/ajnok/yii2-adminlte-displayuser/dist');
     }
 }

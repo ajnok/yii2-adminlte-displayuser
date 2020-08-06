@@ -1,3 +1,18 @@
-body{
+/*
+all link hover color: #f39c12
+normal link color: #fff
+logged-in link color: #8eff8e
+*/
 
+/*Main Sidebar*/
+.main-sidebar .sidebar .user-panel a{
+    color: #fff;
+}
+.main-sidebar .sidebar .user-panel a.logged-in
+{
+    color: #8eff8e;
+}
+.main-sidebar .sidebar .user-panel a.logged-in:hover, .main-sidebar .sidebar .user-panel a:hover
+{
+    color: #f39c12;
 }

@@ -18,7 +18,7 @@ ajnok\displayuser\assets\DisplayUserAsset::register($this);
                 echo HTML::a($icon . DisplayUser::t('messages','Click to Login'),["site/login"]);
             }else{
                 $icon = HTML::tag('i','',['class'=>'fa fa-sign-out']);
-                echo HTML::a($icon . DisplayUser::t('messages','Click to Logout'),["site/logout"],['class'=>'logged-in']);
+                echo HTML::a($icon . DisplayUser::t('messages','Click to Logout'),["site/logout"],['class'=>'logged-in','data-method' => 'post']);
             }
         ?>
 <!--        <a href="#"><i class="fa fa-circle text-success"></i> -->

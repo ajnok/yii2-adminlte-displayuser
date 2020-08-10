@@ -9,6 +9,7 @@ class DisplayUser extends \yii\base\Widget
     private $_isGuest = false;
     private $_username;
     private $_userid;
+    public $location = null;
 //    private $_directoryAsset;
     const GUEST_IMG_PATH = "img/user-unknown.svg";
     public function init()
@@ -32,8 +33,12 @@ class DisplayUser extends \yii\base\Widget
     }
     public function run()
     {
-//        return Html::encode($this->message);
-        return $this->render('user',[
+        if($this->location === null) {
+            $this->location = 'sidebar';
+        }else{
+            $this->location = 'header';
+        }
+        return $this->render($this->location,[
             'image' => $this->getImage(),
             'isGuest' => $this->_isGuest,
             'username'  => $this->_username,

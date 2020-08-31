@@ -15,7 +15,7 @@ ajnok\displayuser\assets\DisplayUserAsset::register($this);
         <?php
             if($isGuest){
                 $icon = HTML::tag('i','',['class'=>'fa fa-key']);
-                echo HTML::a($icon . DisplayUser::t('messages','Click to Login'),["site/login"]);
+                echo HTML::a($icon . DisplayUser::t('messages','Click to Login'),[$loginUrl]);
             }else{
                 $icon = HTML::tag('i','',['class'=>'fa fa-sign-out']);
                 echo HTML::a($icon . DisplayUser::t('messages','Click to Logout'),["site/logout"],['class'=>'logged-in','data-method' => 'post']);

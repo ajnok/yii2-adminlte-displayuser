@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ajnok\displayuser;
 use Yii;
 
@@ -9,6 +8,7 @@ class DisplayUser extends \yii\base\Widget
     private $_isGuest = false;
     private $_username;
     private $_userid;
+    const LOGIN_URL = "authen";
     public $location = null;
 //    private $_directoryAsset;
     const GUEST_IMG_PATH = "img/user-unknown.svg";
@@ -43,6 +43,7 @@ class DisplayUser extends \yii\base\Widget
             'isGuest' => $this->_isGuest,
             'username'  => $this->_username,
             'uid' => $this->_userid,
+            'loginUrl' => self::LOGIN_URL,
         ]);
     }
 

@@ -38,7 +38,7 @@ ajnok\displayuser\assets\DisplayUserAsset::register($this);
     if($isGuest){
     ?>
         <div class="text-center">
-            <?= Html::a(DisplayUser::t('messages','Click to Login'), ['/site/login'],['class'=>'btn btn-default btn-flat']) ?>
+            <?= Html::a(DisplayUser::t('messages','Click to Login'), [$loginUrl],['class'=>'btn btn-default btn-flat']) ?>
         </div>
     <?php
     }else{
